@@ -72,6 +72,7 @@ Tuner.prototype.startRecord = function () {
             name: self.noteStrings[note % 12],
             value: note,
             cents: self.getCents(frequency, note),
+            clearFrequency: self.getStandardFrequency(note),
             octave: parseInt(note / 12) - 1,
             frequency: frequency
           })
