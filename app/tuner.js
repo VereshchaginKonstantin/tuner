@@ -3,18 +3,18 @@ const Tuner = function() {
   this.semitone = 69
   this.bufferSize = 4096
   this.noteStrings = [
-    'C',
-    'C♯',
-    'D',
-    'D♯',
-    'E',
-    'F',
-    'F♯',
-    'G',
-    'G♯',
-    'A',
-    'A♯',
-    'B'
+    'До',
+    'До♯/Ре♭',
+    'Ре',
+    'Ре♯/Ми♭',
+    'Ми',
+    'Фа',
+    'Фа♯/Соль♭',
+    'Соль',
+    'Соль♯/Ля♭',
+    'Ля',
+    'Ля♯/Си♭',
+    'Си'
   ]
 
   this.initGetUserMedia()
