@@ -24,6 +24,7 @@ Meter.prototype.init = function() {
  * @param {number} deg
  */
 Meter.prototype.update = function(deg, frequency) {
+  var AudioContext = w.AudioContext || w.webkitAudioContext;
   var context = new AudioContext()
   var o = context.createOscillator()
   var  g = context.createGain()
