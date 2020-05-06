@@ -3,7 +3,7 @@ const Application = function() {
   this.notes = new Notes('.notes', this.tuner)
   this.meter = new Meter('.meter')
   this.frequencyBars = new FrequencyBars('.frequency-bars')
-  this.update({ name: 'A', frequency: 440, octave: 4, value: 69, cents: 0 })
+  this.update({ name: 'A', clearFrequency: 440, frequency: 440, octave: 4, value: 69, cents: 0 })
 }
 
 Application.prototype.start = function() {
@@ -37,7 +37,7 @@ Application.prototype.updateFrequencyBars = function() {
 
 Application.prototype.update = function(note) {
   this.notes.update(note)
-  this.meter.update((note.cents / 50) * 45)
+  this.meter.update((note.cents / 50) * 45, note.clearFrequency)
 }
 
 // noinspection JSUnusedGlobalSymbols
