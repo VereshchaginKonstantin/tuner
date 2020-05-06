@@ -24,9 +24,9 @@ Meter.prototype.init = function() {
  * @param {number} deg
  */
 Meter.prototype.update = function(deg, frequency) {
-  if(deg > 10)
+  if(deg > 10 || deg < -10)
   { 
-    this.playNote(frequency, 1)
+    this.playNote(frequency, 2)
   }
   this.$pointer.style.transform = 'rotate(' + deg + 'deg)'
 }
