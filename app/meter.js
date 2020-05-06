@@ -24,14 +24,17 @@ Meter.prototype.init = function() {
  * @param {number} deg
  */
 Meter.prototype.update = function(deg, frequency) {
-  this.playNote(frequency, 1)
+  if(deg > 10)
+  { 
+    this.playNote(frequency, 1)
+  }
   this.$pointer.style.transform = 'rotate(' + deg + 'deg)'
 }
 
-
+var audioCtx = new(window.AudioContext || window.webkitAudioContext)();
 
 Meter.prototype.playNote = function(frequency, duration) {
-  var audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+
   // create Oscillator node
   var oscillator = audioCtx.createOscillator();
 
