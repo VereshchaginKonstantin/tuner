@@ -43,6 +43,5 @@ Meter.prototype.playNote = function(frequency, duration) {
   setTimeout(
     function() {
       oscillator.stop();
-      playMelody();
     }, duration);
 }
