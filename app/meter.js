@@ -24,15 +24,25 @@ Meter.prototype.init = function() {
  * @param {number} deg
  */
 Meter.prototype.update = function(deg, frequency) {
-  window.AudioContext = window.AudioContext||window.webkitAudioContext;
-  var context = new AudioContext()
-  var o = context.createOscillator()
-  var  g = context.createGain()
-  o.connect(g)
-  g.connect(context.destination)
-
-  o.frequency.value = frequency
-  o.start(0)
+  this.playNote(frequency, 1)
   this.$pointer.style.transform = 'rotate(' + deg + 'deg)'
-  o.stop()
+}
+
+
+
+Meter.prototype.playNote = function(frequency, duration) {
+  var audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+  // create Oscillator node
+  var oscillator = audioCtx.createOscillator();
+
+  oscillator.type = 'square';
+  oscillator.frequency.value = frequency; // value in hertz
+  oscillator.connect(audioCtx.destination);
+  oscillator.start();
+
+  setTimeout(
+    function() {
+      oscillator.stop();
+      playMelody();
+    }, duration);
 }
