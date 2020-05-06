@@ -23,6 +23,15 @@ Meter.prototype.init = function() {
 /**
  * @param {number} deg
  */
-Meter.prototype.update = function(deg) {
+Meter.prototype.update = function(deg, frequency) {
+  var context = new AudioContext()
+  var o = context.createOscillator()
+  var  g = context.createGain()
+  o.connect(g)
+  g.connect(context.destination)
+
+  o.frequency.value = frequency
+  o.start(0)
   this.$pointer.style.transform = 'rotate(' + deg + 'deg)'
+  o.stop()
 }
