@@ -23,10 +23,7 @@ Notes.prototype.createNotes = function() {
         $note.dataset.value
       )
       $note.innerHTML =
-        $note.dataset.name[0] +
-        '<span class="note-sharp">' +
-        ($note.dataset.name[1] || '') +
-        '</span>' +
+        $note.dataset.name +
         '<span class="note-octave">' +
         $note.dataset.octave +
         '</span>'
