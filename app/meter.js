@@ -7,6 +7,7 @@ const Meter = function(selector) {
   this.$pointer = this.$root.querySelector('.meter-pointer')
   this.init()
 }
+Meter.prototype.playing = false;
 
 Meter.prototype.init = function() {
   for (var i = 0; i <= 10; i += 1) {
@@ -24,10 +25,14 @@ Meter.prototype.init = function() {
  * @param {number} deg
  */
 Meter.prototype.update = function(deg, frequency) {
-  if(deg > 10 || deg < -10)
-  { 
-    this.playNote(frequency, 2)
-  }
+  if(!playing)
+  {
+    this.playing = true;
+    if(deg > 10 || deg < -10)
+    { 
+      this.playNote(frequency, 2)
+    }
+  } 
   this.$pointer.style.transform = 'rotate(' + deg + 'deg)'
 }
 
@@ -46,5 +51,6 @@ Meter.prototype.playNote = function(frequency, duration) {
   setTimeout(
     function() {
       oscillator.stop();
+      this.playing = false;
     }, duration);
 }
