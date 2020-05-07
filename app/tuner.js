@@ -89,7 +89,7 @@ Tuner.prototype.init = function() {
   this.analyser = this.audioContext.createAnalyser()
   this.scriptProcessor = this.audioContext.createScriptProcessor(
     this.bufferSize,
-    1,
+    4,
     1
   )
 
@@ -99,7 +99,7 @@ Tuner.prototype.init = function() {
     self.pitchDetector = new aubio.Pitch(
       'default',
       self.bufferSize,
-      1,
+      4,
       self.audioContext.sampleRate
     )
     self.startRecord()
