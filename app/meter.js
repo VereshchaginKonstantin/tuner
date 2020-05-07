@@ -27,14 +27,14 @@ Meter.prototype.init = function() {
  */
 Meter.prototype.update = function(deg, frequency, audioCtx) {
        var adeg = Math.abs(deg)
-	if(adeg > 10)
+	if(adeg > 5)
 	{
 		this.lastDegree += adeg;
 	}
 	else{
 		this.lastDegree = 0;
 	}
-	if(this.lastDegree > 100)
+	if(this.lastDegree > 50)
         {   
 	   if(!this.playing && audioCtx)
 	   {
