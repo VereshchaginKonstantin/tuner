@@ -2,6 +2,7 @@ const Tuner = function() {
   this.middleA = 440
   this.semitone = 69
   this.bufferSize = 4096
+  this.hopSize = 2
   this.noteStrings = [
     'До',
     'До♯',
@@ -89,7 +90,7 @@ Tuner.prototype.init = function() {
   this.analyser = this.audioContext.createAnalyser()
   this.scriptProcessor = this.audioContext.createScriptProcessor(
     this.bufferSize,
-    4,
+    1,
     1
   )
 
@@ -99,7 +100,7 @@ Tuner.prototype.init = function() {
     self.pitchDetector = new aubio.Pitch(
       'default',
       self.bufferSize,
-      4,
+      self.hopSize,
       self.audioContext.sampleRate
     )
     self.startRecord()
