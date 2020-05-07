@@ -24,22 +24,20 @@ Meter.prototype.init = function() {
 /**
  * @param {number} deg
  */
-Meter.prototype.update = function(deg, frequency) {
- /* if(!this.playing)
+Meter.prototype.update = function(deg, frequency, audioCtx) {
+   if(!this.playing)
   {
     this.playing = true;
     if(deg > 10 || deg < -10)
     { 
-      this.playNote(frequency, 2)
+      this.playNote(frequency, 2, audioCtx)
     }
-  } */
+  }  
   this.$pointer.style.transform = 'rotate(' + deg + 'deg)'
 }
 
-/**
-var audioCtx = new(window.AudioContext || window.webkitAudioContext)();
-
-Meter.prototype.playNote = function(frequency, duration) {
+ 
+Meter.prototype.playNote = function(frequency, duration, audioCtx) {
 
   // create Oscillator node
   var oscillator = audioCtx.createOscillator();
@@ -54,6 +52,4 @@ Meter.prototype.playNote = function(frequency, duration) {
       oscillator.stop();
       this.playing = false;
     }, duration);
-}
- * @param {number} deg
- */
+} 
