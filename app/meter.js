@@ -25,17 +25,18 @@ Meter.prototype.init = function() {
  * @param {number} deg
  */
 Meter.prototype.update = function(deg, frequency) {
-  if(!this.playing)
+ /* if(!this.playing)
   {
     this.playing = true;
     if(deg > 10 || deg < -10)
     { 
       this.playNote(frequency, 2)
     }
-  } 
+  } */
   this.$pointer.style.transform = 'rotate(' + deg + 'deg)'
 }
 
+/**
 var audioCtx = new(window.AudioContext || window.webkitAudioContext)();
 
 Meter.prototype.playNote = function(frequency, duration) {
@@ -54,3 +55,5 @@ Meter.prototype.playNote = function(frequency, duration) {
       this.playing = false;
     }, duration);
 }
+ * @param {number} deg
+ */
