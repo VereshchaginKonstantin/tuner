@@ -25,7 +25,7 @@ Meter.prototype.init = function() {
  * @param {number} deg
  */
 Meter.prototype.update = function(deg, frequency, audioCtx) {
-   if(!this.playing)
+   if(!this.playing && audioCtx)
   {
     this.playing = true;
     if(deg > 10 || deg < -10)
