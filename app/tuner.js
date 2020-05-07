@@ -2,7 +2,7 @@ const Tuner = function() {
   this.middleA = 440
   this.semitone = 69
   this.bufferSize = 4096
-  this.hopSize = 2
+  this.hopSize = 1
   this.noteStrings = [
     'До',
     'До♯',
