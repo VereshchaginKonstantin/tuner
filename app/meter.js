@@ -34,8 +34,7 @@ Meter.prototype.update = function(deg, frequency, audioCtx) {
 	   {
 		  this.playing = true; 
 		  this.playNote(frequency, 2, audioCtx)
-		}
-	   }
+		} 
        this.$pointer.style.transform = 'rotate(' + deg + 'deg)'	
 	   if(this.lastDegree > 250)
 	   {
