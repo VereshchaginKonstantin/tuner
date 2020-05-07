@@ -37,7 +37,7 @@ Application.prototype.updateFrequencyBars = function() {
 
 Application.prototype.update = function(note) {
   this.notes.update(note)
-  this.meter.update((note.cents / 50) * 45, note.clearFrequency)
+  this.meter.update((note.cents / 50) * 45, note.clearFrequency, this.tuner.audioContext)
 }
 
 // noinspection JSUnusedGlobalSymbols
