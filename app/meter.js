@@ -27,8 +27,11 @@ Meter.prototype.init = function() {
  */
 Meter.prototype.update = function(deg, frequency, audioCtx) {
     var adeg = Math.abs(deg);
-	this.lastDegree += adeg;
-	if(this.lastDegree > 200)
+	if(adeg > 10)
+	{
+		this.lastDegree += adeg;
+	}
+	if(this.lastDegree > 100)
     {   
 	   if(!this.playing && audioCtx)
 	   {
@@ -36,7 +39,7 @@ Meter.prototype.update = function(deg, frequency, audioCtx) {
 		  this.playNote(frequency, 2, audioCtx)
 		} 
        this.$pointer.style.transform = 'rotate(' + deg + 'deg)'	
-	   if(this.lastDegree > 250)
+	   if(this.lastDegree > 150)
 	   {
 			this.lastDegree = 0;
 	   }
