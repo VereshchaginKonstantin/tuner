@@ -8,6 +8,7 @@ const Meter = function(selector) {
   this.init()
 }
 Meter.prototype.playing = false;
+Meter.prototype.lastDegree = 0;
 
 Meter.prototype.init = function() {
   for (var i = 0; i <= 10; i += 1) {
@@ -25,15 +26,26 @@ Meter.prototype.init = function() {
  * @param {number} deg
  */
 Meter.prototype.update = function(deg, frequency, audioCtx) {
-   if(!this.playing && audioCtx)
-  {
-    this.playing = true;
-    if(deg > 10 || deg < -10)
-    { 
-      this.playNote(frequency, 2, audioCtx)
+    var adeg = Math.abs(deg);
+	this.lastDegree += adeg;
+	if(this.lastDegree > 200)
+    {   
+	   if(!this.playing && audioCtx)
+	   {
+		  this.playing = true; 
+		  this.playNote(frequency, 2, audioCtx)
+		}
+	   }
+       this.$pointer.style.transform = 'rotate(' + deg + 'deg)'	
+	   if(this.lastDegree > 250)
+	   {
+			this.lastDegree = 0;
+	   }
     }
-  }  
-  this.$pointer.style.transform = 'rotate(' + deg + 'deg)'
+	else
+	{ 
+       this.$pointer.style.transform = 'rotate(' + 0 + 'deg)'	  
+	}
 }
 
  
