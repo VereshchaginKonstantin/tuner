@@ -26,24 +26,27 @@ Meter.prototype.init = function() {
  * @param {number} deg
  */
 Meter.prototype.update = function(deg, frequency, audioCtx) {
-    var adeg = Math.abs(deg);
+       var adeg = Math.abs(deg)
 	if(adeg > 10)
 	{
 		this.lastDegree += adeg;
 	}
+	else{
+		this.lastDegree = 0;
+	}
 	if(this.lastDegree > 100)
-    {   
+        {   
 	   if(!this.playing && audioCtx)
 	   {
 		  this.playing = true; 
 		  this.playNote(frequency, 2, audioCtx)
 		} 
-       this.$pointer.style.transform = 'rotate(' + deg + 'deg)'	
-	   if(this.lastDegree > 150)
+           this.$pointer.style.transform = 'rotate(' + deg + 'deg)'	
+	   if(this.lastDegree > 250)
 	   {
 			this.lastDegree = 0;
 	   }
-    }
+        }
 	else
 	{ 
        this.$pointer.style.transform = 'rotate(' + 0 + 'deg)'	  
