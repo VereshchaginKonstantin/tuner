@@ -59,12 +59,13 @@ Meter.prototype.playNote = function(frequency, duration, audioCtx) {
   oscillator.type = 'square';
   oscillator.frequency.value = frequency; // value in hertz
   oscillator.connect(audioCtx.destination);
+  console.log("start");
   oscillator.start();
   
   console.log(oscillator);
   setTimeout(
     function() {
       oscillator.stop(); 
-      console.log(this.playing );
+      console.log("stop");
     }, duration); 
 } 
