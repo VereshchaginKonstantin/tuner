@@ -57,9 +57,9 @@ Meter.prototype.playNote = function(frequency, duration, audioCtx) {
   var oscillator = audioCtx.createOscillator();
 
   oscillator.type = 'square';
-  oscillator.frequency.value = frequency; // value in hertz
+  oscillator.frequency.value = 440; // value in hertz
   oscillator.connect(audioCtx.destination);
-  console.log("start");
+  console.log("start " + frequency);
   oscillator.start();
   
   console.log(oscillator);
