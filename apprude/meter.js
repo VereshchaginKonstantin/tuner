@@ -36,11 +36,12 @@ Meter.prototype.update = function(deg, frequency, audioCtx) {
 	}
 	if(this.lastDegree > 100)
         {   
-	   if(!this.playing && audioCtx)
-	   {
-		  this.playing = true; 
-		  this.playNote(frequency, 2, audioCtx)
-		} 
+          console.log(audioCtx);
+          if(!this.playing && audioCtx)
+          {
+            this.playing = true; 
+            this.playNote(frequency, 2, audioCtx)
+          } 
            this.$pointer.style.transform = 'rotate(' + deg + 'deg)'	 
         }
 	else
@@ -59,7 +60,7 @@ Meter.prototype.playNote = function(frequency, duration, audioCtx) {
   oscillator.frequency.value = frequency; // value in hertz
   oscillator.connect(audioCtx.destination);
   oscillator.start();
-
+  
   setTimeout(
     function() {
       oscillator.stop();
