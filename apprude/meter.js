@@ -34,7 +34,7 @@ Meter.prototype.update = function(deg, frequency, audioCtx) {
 	else{
 		this.lastDegree = 0;
 	}
-	if(this.lastDegree > 100)
+	if(this.lastDegree > 50)
         {
             this.playNote = true;   
             console.log(audioCtx);
